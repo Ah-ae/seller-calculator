@@ -2,6 +2,13 @@ import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
 import Button from "@/components/ui/Button";
 import { useState } from "react";
+import {
+  calculateMallCommissionPrice,
+  calculateSettlementAmount,
+  calculateMarginPrice,
+  calculateMarginRate,
+} from "@/util/calc";
+import { addComma, deleteComma } from "@/util/decimalHelpers";
 
 export default function Margin() {
   const [inputs, setInputs] = useState({
@@ -12,31 +19,6 @@ export default function Margin() {
     commission: "",
   });
   const { purchaseCost, sellingPrice, shipping, others, commission } = inputs;
-
-  const addComma = (value) => {
-    if (typeof value === "string") {
-      let valueWithoutComma = deleteComma(value);
-
-      // 소수점 처리
-      if (
-        typeof valueWithoutComma === "string" &&
-        valueWithoutComma.includes(".")
-      ) {
-        const [integer, decimal] = valueWithoutComma.split(".");
-        valueWithoutComma = Number(integer);
-        return `${valueWithoutComma.toLocaleString("ko-KR")}.${decimal}`;
-      }
-
-      valueWithoutComma = Number(valueWithoutComma);
-      return valueWithoutComma.toLocaleString("ko-KR");
-    } else if (typeof value === "number") {
-      return value.toLocaleString("ko-KR");
-    }
-  };
-
-  const deleteComma = (value) => {
-    if (typeof value === "string") return value.replace(/,/g, "");
-  };
 
   const onChange = (e) => {
     const { id, value } = e.target;
@@ -54,39 +36,6 @@ export default function Margin() {
   const [settlement, setSettlement] = useState(0);
   const [marginPrice, setMarginPrice] = useState(0);
   const [marginRate, setMarginRate] = useState(0);
-
-  const calculateMallCommissionPrice = (sellingPrice, commission) => {
-    if (!sellingPrice || !commission) return;
-    return sellingPrice * (commission * 0.01);
-  };
-
-  const calculateSettlementAmount = (
-    sellingPrice,
-    shipping,
-    commissionPrice
-  ) => {
-    if (!sellingPrice || !shipping || !commissionPrice) return;
-    return sellingPrice - shipping - commissionPrice;
-  };
-
-  const calculateMarginPrice = (settlementAmount, purchaseCost, others) => {
-    if (!settlementAmount || !purchaseCost || !others) return;
-    return settlementAmount - purchaseCost - others;
-  };
-
-  const calculateMarginRate = (
-    purchaseCost,
-    shipping,
-    others,
-    sellingPrice
-  ) => {
-    if (!purchaseCost || !shipping || !others || !sellingPrice) return;
-
-    return (
-      (1 - (purchaseCost + shipping + others) / sellingPrice) *
-      100
-    ).toFixed(2);
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
