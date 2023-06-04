@@ -11,15 +11,18 @@ export default function InputBox({
       <label htmlFor={id}>{label}</label>
       <div>
         <input
-          type="number"
+          type="text"
           step="0.01"
-          pattern="\d*"
+          inputMode="decimal"
           id={id}
-          className={`px-2 py-1 ${disabled ? "text-gray400" : "text-black"}`}
+          className={`px-2 py-1 ${
+            disabled ? "text-gray400" : "text-black"
+          } text-right`}
           disabled={disabled ? true : false}
-          placeholder="0"
           value={value}
+          placeholder="0"
           onChange={onChange}
+          autoComplete="off"
         />
         <span className="ml-2">{unit}</span>
       </div>
