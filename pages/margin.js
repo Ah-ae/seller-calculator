@@ -40,6 +40,12 @@ export default function Margin() {
 
   const onChange = (e) => {
     const { id, value } = e.target;
+
+    if (isNaN(value)) {
+      alert("숫자를 입력해 주세요.");
+      return;
+    }
+
     const valueWithComma = addComma(value);
     setInputs({ ...inputs, [id]: valueWithComma });
   };
