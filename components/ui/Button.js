@@ -1,17 +1,9 @@
-export function Button({
-  children,
-  type,
-  onClick,
-  bgColor,
-  hoverBgColor,
-  color,
-  style,
-}) {
+export function Button({ children, type, onClick, theme, style }) {
   return (
     <button
-      className={`w-40 h-12 ${bgColor ? bgColor : "bg-blue300"} ${
-        hoverBgColor ? hoverBgColor : " hover:bg-blue200"
-      } ${color ? color : "text-white"}  rounded-md ${style}`}
+      className={`w-40 h-12 ${
+        theme ? theme : "bg-blue-300 hover:bg-blue-200 text-white"
+      } rounded-md ${style}`}
       type={type}
       onClick={onClick}
     >
@@ -23,7 +15,7 @@ export function Button({
 export function SmallButton({ children, onClick, style }) {
   return (
     <button
-      className={`w-auto h-7 px-2 border-solid border-[1px] border-gray200 rounded-md text-gray300 text-sm ${style}`}
+      className={`w-auto h-7 px-2 border-solid border-[1px] border-gray-200 rounded-md text-gray-300 text-sm ${style}`}
       type="button"
       onClick={onClick}
     >

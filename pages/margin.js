@@ -107,6 +107,7 @@ export default function Margin() {
         </SmallButton>
         <InputBox
           label="매입가"
+          desc="(VAT 포함)"
           unit="원"
           id="purchaseCost"
           value={purchaseCost}
@@ -128,6 +129,7 @@ export default function Margin() {
         />
         <InputBox
           label="기타 비용"
+          desc="(포장, 부자재 등)"
           unit="원"
           id="others"
           value={others}
@@ -135,6 +137,7 @@ export default function Margin() {
         />
         <InputBox
           label="마켓 수수료"
+          desc="(%)"
           unit="%"
           id="commission"
           value={commission}
@@ -142,18 +145,19 @@ export default function Margin() {
         />
         <InputBox
           label="마켓 수수료"
+          desc="(원)"
           unit="원"
           disabled
           value={addComma(commissionPrice)}
-          expression={formula.commissionAmount}
+          formula={formula.commissionAmount}
           hidden={isHidden}
         />
         <InputBox
-          label="정산 금액"
+          label="쇼핑몰 정산 금액"
           unit="원"
           disabled
           value={addComma(settlement)}
-          expression={formula.settlementAmount}
+          formula={formula.settlementAmount}
           hidden={isHidden}
         />
         <InputBox
@@ -161,7 +165,7 @@ export default function Margin() {
           unit="원"
           disabled
           value={addComma(marginPrice)}
-          expression={formula.marginPrice}
+          formula={formula.marginPrice}
           hidden={isHidden}
         />
         <InputBox
@@ -169,7 +173,7 @@ export default function Margin() {
           unit="%"
           disabled
           value={addComma(marginRate)}
-          expression={formula.marginRate}
+          formula={formula.marginRate}
           hidden={isHidden}
         />
         <div className="mt-4 flex justify-end">
@@ -178,9 +182,7 @@ export default function Margin() {
           </Button>
           <Button
             type="button"
-            bgColor="bg-gray100"
-            color="text-gray400"
-            hoverBgColor="hover:bg-gray200"
+            theme="bg-gray-100 hover:bg-gray-200 text-gray-400"
             onClick={reset}
           >
             초기화하기

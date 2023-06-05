@@ -1,17 +1,20 @@
 export default function InputBox({
   id,
   label,
+  desc,
   unit,
   disabled,
   value,
   onChange,
-  expression,
+  formula,
   hidden,
 }) {
   return (
     <div className="h-[60px] py-2 flex-col">
       <div className="flex justify-between items-center">
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id}>
+          {label} <span className="text-sm">{desc}</span>
+        </label>
         <div>
           <input
             type="text"
@@ -19,8 +22,8 @@ export default function InputBox({
             inputMode="decimal"
             id={id}
             className={`px-2 py-1 ${
-              disabled ? "text-gray400" : "text-black"
-            } text-right focus:outline-gray600`}
+              disabled ? "text-gray-400" : "text-black"
+            } text-right focus:outline-gray-600`}
             disabled={disabled ? true : false}
             value={value}
             placeholder="0"
@@ -32,10 +35,10 @@ export default function InputBox({
       </div>
       <span
         className={`${
-          hidden ? "text-xs text-gray400 hidden" : "text-xs text-gray400 "
+          hidden ? "text-xs text-gray-400 hidden" : "text-xs text-gray-400 "
         }`}
       >
-        {expression}
+        {formula}
       </span>
     </div>
   );
