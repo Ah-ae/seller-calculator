@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
-import Button from "@/components/ui/Button";
+import { Button, SmallButton } from "@/components/ui/Button";
 import { useState } from "react";
 import {
   calculateMallCommissionPrice,
@@ -10,6 +10,7 @@ import {
 } from "@/util/calc";
 import { addComma, deleteComma } from "@/util/decimalHelpers";
 import { isValid } from "@/util/validation";
+import { formula } from "@/util/formula";
 
 export default function Margin() {
   const [inputs, setInputs] = useState({
@@ -92,10 +93,18 @@ export default function Margin() {
     setMarginRate(0);
   };
 
+  const [isHidden, setIsHidden] = useState(true);
+  const handleHidden = () => {
+    setIsHidden((cur) => !cur);
+  };
+
   return (
     <Container>
-      <h2 className="mt-6 mb-4 text-4xl">판매가 마진 계산기</h2>
-      <form className="p-4 max-w-md" onSubmit={onSubmit}>
+      <h2 className="pt-6 pb-4 text-4xl">판매가 마진 계산기</h2>
+      <form className="px-4 flex flex-col" onSubmit={onSubmit}>
+        <SmallButton style="mb-4 self-end" onClick={handleHidden}>
+          {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
+        </SmallButton>
         <InputBox
           label="매입가"
           unit="원"
@@ -136,26 +145,34 @@ export default function Margin() {
           unit="원"
           disabled
           value={addComma(commissionPrice)}
+          expression={formula.commissionAmount}
+          hidden={isHidden}
         />
         <InputBox
           label="정산 금액"
           unit="원"
           disabled
           value={addComma(settlement)}
+          expression={formula.settlementAmount}
+          hidden={isHidden}
         />
         <InputBox
           label="마진"
           unit="원"
           disabled
           value={addComma(marginPrice)}
+          expression={formula.marginPrice}
+          hidden={isHidden}
         />
         <InputBox
           label="마진율"
           unit="%"
           disabled
           value={addComma(marginRate)}
+          expression={formula.marginRate}
+          hidden={isHidden}
         />
-        <div className="mt-6 flex justify-end">
+        <div className="mt-4 flex justify-end">
           <Button type="submit" style="mr-3">
             계산하기
           </Button>
