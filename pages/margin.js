@@ -9,6 +9,7 @@ import {
   calculateMarginRate,
 } from "@/util/calc";
 import { addComma, deleteComma } from "@/util/decimalHelpers";
+import { isValid } from "@/util/validation";
 
 export default function Margin() {
   const [inputs, setInputs] = useState({
@@ -23,7 +24,7 @@ export default function Margin() {
   const onChange = (e) => {
     const { id, value } = e.target;
 
-    if (isNaN(value)) {
+    if (!isValid(value)) {
       alert("숫자를 입력해 주세요.");
       return;
     }
