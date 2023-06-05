@@ -1,3 +1,3 @@
 export default function Container({ children }) {
-  return <main className="px-12 py-4">{children}</main>;
+  return <div className="mx-auto my-0 w-3/5 max-w-md">{children}</div>;
 }

@@ -24,6 +24,10 @@ input {
   border-radius: 0.2rem;
 }
 
+button:focus {
+  outline: none;
+}
+
 /* input number 상하 화살표 없애기 */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
