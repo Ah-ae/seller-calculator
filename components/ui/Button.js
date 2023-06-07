@@ -2,7 +2,9 @@ export function Button({ children, type, onClick, theme, style }) {
   return (
     <button
       className={`w-40 h-12 ${
-        theme ? theme : "bg-blue-300 hover:bg-blue-200 text-white"
+        theme
+          ? theme
+          : "bg-blue-300 hover:bg-blue-200 max-md:hover:bg-blue-300 text-white"
       } rounded-md ${style}`}
       type={type}
       onClick={onClick}

@@ -101,9 +101,11 @@ export default function Margin() {
 
   return (
     <Container>
-      <h2 className="pt-6 pb-4 text-4xl">판매가 마진 계산기</h2>
+      <h2 className="pt-6 pb-4 text-4xl max-md:text-3xl max-md:text-center">
+        판매가 마진 계산기
+      </h2>
       <form className="px-4 flex flex-col" onSubmit={onSubmit}>
-        <SmallButton style="mb-4 self-end" onClick={handleHidden}>
+        <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
           {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
         </SmallButton>
         <InputBox
@@ -177,7 +179,7 @@ export default function Margin() {
           formula={formula.marginRate}
           hidden={isHidden}
         />
-        <div className="mt-4 flex justify-end">
+        <div className="my-4 flex justify-end">
           <Button type="submit" style="mr-3">
             계산하기
           </Button>
