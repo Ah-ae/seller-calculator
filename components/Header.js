@@ -22,13 +22,6 @@ export default function Header() {
           height={48}
           className="mr-6"
         />
-        <Image
-          src="/og-image.svg"
-          alt="open graph image"
-          width={192}
-          height={64}
-          className="hidden"
-        />
         <div
           className="hidden max-md:inline-block cursor-pointer"
           onClick={onClick}
