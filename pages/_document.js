@@ -25,10 +25,10 @@ export default function Document() {
           property="og:description"
           content="마진, 판매가 등을 계산할 수 있는 웹 앱 계산기"
         />
-        <meta
+        {/* <meta
           property="og:image"
           content="https://seller-calculator.vercel.app/logo.svg"
-        />
+        /> */}
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
