@@ -1,7 +1,7 @@
+import { useState } from "react";
+import { Button, SmallButton } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
-import { Button, SmallButton } from "@/components/ui/Button";
-import { useState } from "react";
 import {
   calculateMallCommissionPrice,
   calculateSettlementAmount,
@@ -9,8 +9,8 @@ import {
   calculateMarginRate,
 } from "@/util/calc";
 import { addComma, deleteComma } from "@/util/decimalHelpers";
-import { isValid } from "@/util/validation";
 import { formula } from "@/util/formula";
+import { isValid } from "@/util/validation";
 
 export default function Margin() {
   const [inputs, setInputs] = useState({

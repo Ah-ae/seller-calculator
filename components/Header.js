@@ -1,7 +1,7 @@
-import NavBar from "./NavBar";
 import Image from "next/image";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import NavBar from "./NavBar";
 
 export default function Header() {
   const [isHidden, setIsHidden] = useState(true);
