@@ -12,7 +12,7 @@ export default function Header() {
     <header
       className={`${
         isHidden ? "h-13" : "h-28"
-      } px-12 max-md:pl-2 max-md:pr-5 py-2 flex max-md:flex-col items-center bg-gray-600`}
+      } px-12 max-md:pl-2 max-md:pr-5 py-2 flex max-md:flex-col items-center bg-blue-300`}
     >
       <div className="max-md:w-full flex justify-between items-center">
         <Image
@@ -22,7 +22,10 @@ export default function Header() {
           height={48}
           className="mr-6"
         />
-        <div className="hidden max-md:inline-block" onClick={onClick}>
+        <div
+          className="hidden max-md:inline-block cursor-pointer"
+          onClick={onClick}
+        >
           <GiHamburgerMenu
             style={{ color: "white", transform: "scale(1.8)" }}
           />
