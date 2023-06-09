@@ -13,13 +13,14 @@ import { formula } from "@/util/formula";
 import { isValid } from "@/util/validation";
 
 export default function Margin() {
-  const [inputs, setInputs] = useState({
+  const initialInputs = {
     purchaseCost: "",
     sellingPrice: "",
     shipping: "",
     others: "",
     commission: "",
-  });
+  };
+  const [inputs, setInputs] = useState(initialInputs);
   const { purchaseCost, sellingPrice, shipping, others, commission } = inputs;
 
   const onChange = (e) => {
@@ -80,14 +81,7 @@ export default function Margin() {
   };
 
   const reset = () => {
-    setInputs({
-      purchaseCost: "",
-      sellingPrice: "",
-      shipping: "",
-      others: "",
-      commission: "",
-    });
-
+    setInputs(initialInputs);
     setCommissionPrice(0);
     setSettlement(0);
     setMarginPrice(0);
