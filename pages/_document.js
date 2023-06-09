@@ -27,7 +27,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://seller-calculator.vercel.app/logo.svg"
+          content="https://seller-calculator.vercel.app//og-image.svg"
         />
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
