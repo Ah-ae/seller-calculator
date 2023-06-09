@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Seo from "@/components/Seo";
 import { Button, SmallButton } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
@@ -95,9 +96,7 @@ export default function Margin() {
 
   return (
     <Container>
-      <h2 className="pt-6 pb-4 text-4xl max-md:text-3xl max-md:text-center">
-        판매가 마진 계산기
-      </h2>
+      <Seo title="마진 계산기" />
       <form className="px-4 flex flex-col" onSubmit={onSubmit}>
         <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
           {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
