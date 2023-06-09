@@ -27,7 +27,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://seller-calculator.vercel.app/og-image.svg"
+          content="https://firebasestorage.googleapis.com/v0/b/seller-calculator-5d44a.appspot.com/o/og-image.png?alt=media&token=e09b6814-706f-485d-b266-0c547136bef6"
         />
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
