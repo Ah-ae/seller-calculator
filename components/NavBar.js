@@ -26,7 +26,7 @@ export default function NavBar() {
             router.pathname === "/discount" ? "text-white" : "text-gray-200"
           }
         >
-          할인쿠폰{" "}
+          할인쿠폰
         </a>
       </Link>
     </nav>
