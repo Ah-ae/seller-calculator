@@ -20,6 +20,7 @@ export default function Header() {
           alt="logo image"
           width={172}
           height={48}
+          priority={true}
           className="mr-6"
         />
         <div
