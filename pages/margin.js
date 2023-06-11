@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Seo from "@/components/Seo";
-import { Button, SmallButton } from "@/components/ui/Button";
+import { SmallButton } from "@/components/ui/Button";
+import ButtonGroup from "@/components/ui/ButtonGroup";
 import Container from "@/components/ui/Container";
-import InputBox from "@/components/ui/InputBox";
+import InputList from "@/components/ui/InputList";
+import OutputList from "@/components/ui/OutputList";
 import useInputs from "@/hooks/useInputs";
 import {
   calculateMallCommissionPrice,
@@ -10,7 +12,7 @@ import {
   calculateMarginPrice,
   calculateMarginRate,
 } from "@/util/calc";
-import { addComma, deleteComma } from "@/util/decimalHelpers";
+import { deleteComma } from "@/util/decimalHelpers";
 import { formula } from "@/util/formula";
 
 export default function Margin() {
@@ -71,7 +73,6 @@ export default function Margin() {
 
   const resetAll = () => {
     reset();
-
     setCommissionPrice(0);
     setSettlement(0);
     setMarginPrice(0);
@@ -83,6 +84,79 @@ export default function Margin() {
     setIsHidden((cur) => !cur);
   };
 
+  const inputList = [
+    {
+      label: "매입가",
+      desc: "(VAT 포함)",
+      unit: "원",
+      id: "purchaseCost",
+      value: purchaseCost,
+      onChange,
+    },
+    {
+      label: "판매가",
+      unit: "원",
+      id: "sellingPrice",
+      value: sellingPrice,
+      onChange,
+    },
+    {
+      label: "배송비",
+      unit: "원",
+      id: "shipping",
+      value: shipping,
+      onChange,
+    },
+    {
+      label: "기타 비용",
+      desc: "(포장, 부자재 등)",
+      unit: "원",
+      id: "others",
+      value: others,
+      onChange,
+    },
+    {
+      label: "마켓 수수료",
+      desc: "(%)",
+      unit: "%",
+      id: "commission",
+      value: commission,
+      onChange,
+    },
+  ];
+
+  const outputList = [
+    {
+      label: "마켓 수수료",
+      desc: "(%)",
+      unit: "%",
+      value: commissionPrice,
+      formula: formula.commissionPrice,
+      hidden: isHidden,
+    },
+    {
+      label: "쇼핑몰 정산 금액",
+      unit: "원",
+      value: settlement,
+      formula: formula.settlementAmount,
+      hidden: isHidden,
+    },
+    {
+      label: "마진",
+      unit: "원",
+      value: marginPrice,
+      formula: formula.marginPrice,
+      hidden: isHidden,
+    },
+    {
+      label: "마진율",
+      unit: "%",
+      value: marginRate,
+      formula: formula.marginRate,
+      hidden: isHidden,
+    },
+  ];
+
   return (
     <Container>
       <Seo title="마진 계산기" />
@@ -90,89 +164,9 @@ export default function Margin() {
         <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
           {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
         </SmallButton>
-        <InputBox
-          label="매입가"
-          desc="(VAT 포함)"
-          unit="원"
-          id="purchaseCost"
-          value={purchaseCost}
-          onChange={onChange}
-        />
-        <InputBox
-          label="판매가"
-          unit="원"
-          id="sellingPrice"
-          value={sellingPrice}
-          onChange={onChange}
-        />
-        <InputBox
-          label="배송비"
-          unit="원"
-          id="shipping"
-          value={shipping}
-          onChange={onChange}
-        />
-        <InputBox
-          label="기타 비용"
-          desc="(포장, 부자재 등)"
-          unit="원"
-          id="others"
-          value={others}
-          onChange={onChange}
-        />
-        <InputBox
-          label="마켓 수수료"
-          desc="(%)"
-          unit="%"
-          id="commission"
-          value={commission}
-          onChange={onChange}
-        />
-        <InputBox
-          label="마켓 수수료"
-          desc="(원)"
-          unit="원"
-          disabled
-          value={addComma(commissionPrice)}
-          formula={formula.commissionAmount}
-          hidden={isHidden}
-        />
-        <InputBox
-          label="쇼핑몰 정산 금액"
-          unit="원"
-          disabled
-          value={addComma(settlement)}
-          formula={formula.settlementAmount}
-          hidden={isHidden}
-        />
-        <InputBox
-          label="마진"
-          unit="원"
-          disabled
-          value={addComma(marginPrice)}
-          formula={formula.marginPrice}
-          hidden={isHidden}
-        />
-        <InputBox
-          label="마진율"
-          unit="%"
-          disabled
-          value={addComma(marginRate)}
-          formula={formula.marginRate}
-          hidden={isHidden}
-        />
-        <div className="my-4 flex justify-end">
-          <Button type="submit" style="mr-3">
-            계산하기
-          </Button>
-          <Button
-            type="button"
-            theme="bg-gray-100 hover:bg-gray-200 text-gray-400"
-            onClick={resetAll}
-          >
-            초기화하기
-          </Button>
-        </div>
+        <InputList list={inputList} />
+        <OutputList list={outputList} />
+        <ButtonGroup onClick={resetAll} />
       </form>
     </Container>
   );
