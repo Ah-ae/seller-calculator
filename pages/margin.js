@@ -3,6 +3,7 @@ import Seo from "@/components/Seo";
 import { Button, SmallButton } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
+import useInputs from "@/hooks/useInputs";
 import {
   calculateMallCommissionPrice,
   calculateSettlementAmount,
@@ -11,7 +12,6 @@ import {
 } from "@/util/calc";
 import { addComma, deleteComma } from "@/util/decimalHelpers";
 import { formula } from "@/util/formula";
-import { isValid } from "@/util/validation";
 
 export default function Margin() {
   const initialInputs = {
@@ -21,20 +21,8 @@ export default function Margin() {
     others: "",
     commission: "",
   };
-  const [inputs, setInputs] = useState(initialInputs);
+  const [inputs, onChange, reset] = useInputs(initialInputs);
   const { purchaseCost, sellingPrice, shipping, others, commission } = inputs;
-
-  const onChange = (e) => {
-    const { id, value } = e.target;
-
-    if (!isValid(value)) {
-      alert("숫자를 입력해 주세요.");
-      return;
-    }
-
-    const valueWithComma = addComma(value);
-    setInputs({ ...inputs, [id]: valueWithComma });
-  };
 
   const [commissionPrice, setCommissionPrice] = useState(0);
   const [settlement, setSettlement] = useState(0);
@@ -81,8 +69,9 @@ export default function Margin() {
     setMarginRate(convertedMarginRate);
   };
 
-  const reset = () => {
-    setInputs(initialInputs);
+  const resetAll = () => {
+    reset();
+
     setCommissionPrice(0);
     setSettlement(0);
     setMarginPrice(0);
@@ -179,7 +168,7 @@ export default function Margin() {
           <Button
             type="button"
             theme="bg-gray-100 hover:bg-gray-200 text-gray-400"
-            onClick={reset}
+            onClick={resetAll}
           >
             초기화하기
           </Button>

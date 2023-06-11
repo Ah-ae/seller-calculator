@@ -17,6 +17,7 @@
           { "pattern": "next", "group": "builtin" },
           { "pattern": "react", "group": "builtin" },
           { "pattern": "@/components/**", "group": "internal" },
+          { "pattern": "@/hooks/**", "group": "internal" },
           { "pattern": "@/util/**", "group": "internal" }
         ],
         "alphabetize": {
