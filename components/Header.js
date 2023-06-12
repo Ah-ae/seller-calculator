@@ -33,9 +33,11 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`${
-          isHidden ? "max-md:hidden" : "max-md:flex w-full px-14 grow "
-        }`}
+        className={
+          isHidden
+            ? "max-md:hidden"
+            : "max-md:flex w-full px-14 max-md:px-2 max-md:justify-center max-md:items-center grow"
+        }
       >
         <NavBar />
       </div>
