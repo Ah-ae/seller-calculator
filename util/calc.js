@@ -1,6 +1,6 @@
 export const calculateMallCommissionPrice = (sellingPrice, commission) => {
   if (!sellingPrice || !commission) return;
-  return sellingPrice * (commission * 0.01);
+  return Math.round(sellingPrice * (commission * 0.01));
 };
 
 export const calculateSettlementAmount = (sellingPrice, commissionPrice) => {
@@ -9,13 +9,16 @@ export const calculateSettlementAmount = (sellingPrice, commissionPrice) => {
 };
 
 export const calculateMarginPrice = (
-  settlementAmount,
+  sellingPrice,
   purchaseCost,
+  commissionPrice,
   shipping,
   others
 ) => {
-  if (!settlementAmount || !purchaseCost || !shipping || !others) return;
-  return settlementAmount - purchaseCost - shipping - others;
+  if (!sellingPrice || !purchaseCost) return;
+  return Math.round(
+    sellingPrice - purchaseCost - commissionPrice - shipping - others
+  );
 };
 
 export const calculateMarginRate = (
@@ -36,4 +39,12 @@ export const calculateMarginRate = (
       sellingPrice) *
     100
   ).toFixed(2);
+};
+
+export const calculateSellingPrice = (purchaseCost, commission, marginRate) => {
+  if (!purchaseCost || !marginRate) return;
+
+  return Math.round(
+    purchaseCost / (1 - commission * 0.01) / (1 - marginRate * 0.01)
+  );
 };
