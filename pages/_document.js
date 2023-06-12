@@ -27,7 +27,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://firebasestorage.googleapis.com/v0/b/seller-calculator-5d44a.appspot.com/o/og-image.svg?alt=media&token=38ee47a5-1979-4824-82f1-a57848369f9d"
+          content="https://firebasestorage.googleapis.com/v0/b/seller-calculator-5d44a.appspot.com/o/og-image.svg?alt=media&token=c8e9319f-826d-48d5-ab22-a59b5f2676b7"
         />
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
