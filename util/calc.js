@@ -3,22 +3,19 @@ export const calculateMallCommissionPrice = (sellingPrice, commission) => {
   return sellingPrice * (commission * 0.01);
 };
 
-export const calculateSettlementAmount = (
-  sellingPrice,
-  shipping,
-  commissionPrice
-) => {
-  if (!sellingPrice || !shipping || !commissionPrice) return;
-  return sellingPrice - shipping - commissionPrice;
+export const calculateSettlementAmount = (sellingPrice, commissionPrice) => {
+  if (!sellingPrice || !commissionPrice) return;
+  return sellingPrice - commissionPrice;
 };
 
 export const calculateMarginPrice = (
   settlementAmount,
   purchaseCost,
+  shipping,
   others
 ) => {
-  if (!settlementAmount || !purchaseCost || !others) return;
-  return settlementAmount - purchaseCost - others;
+  if (!settlementAmount || !purchaseCost || !shipping || !others) return;
+  return settlementAmount - purchaseCost - shipping - others;
 };
 
 export const calculateMarginRate = (

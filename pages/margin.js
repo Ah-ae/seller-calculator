@@ -47,13 +47,13 @@ export default function Margin() {
 
     const convertedSettlementAmount = calculateSettlementAmount(
       convertedSellingPrice,
-      convertedShippingValue,
       convertedCommissionPrice
     );
 
     const convertedMarginPrice = calculateMarginPrice(
       convertedSettlementAmount,
       convertedPurchaseCost,
+      convertedShippingValue,
       convertedOthersValue
     );
 
