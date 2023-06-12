@@ -11,7 +11,7 @@ export default function Document() {
         />
         <meta
           name="description"
-          content="마진, 판매가, 행사가 환원 등을 계산할 수 있는 웹 앱 계산기"
+          content="마진, 판매가, 행사가 환원 등을 계산할 수 있는 웹 계산기 앱"
         />
         <meta name="author" content="Ahae Kim" />
         <meta property="og:title" content="온라인 셀러 계산기" />
@@ -23,7 +23,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta
           property="og:description"
-          content="마진, 판매가, 행사가 환원 등을 계산할 수 있는 웹 앱 계산기"
+          content="마진, 판매가, 행사가 환원 등을 계산할 수 있는 웹 계산기 앱"
         />
         <meta
           property="og:image"
