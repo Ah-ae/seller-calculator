@@ -43,8 +43,20 @@ export const calculateMarginRate = (
 
 export const calculateSellingPrice = (purchaseCost, commission, marginRate) => {
   if (!purchaseCost || !marginRate) return;
-
   return Math.round(
     purchaseCost / (1 - commission * 0.01) / (1 - marginRate * 0.01)
+  );
+};
+
+export const calculateDiscountRate = (originalPrice, discountedPrice) => {
+  if (!originalPrice || !discountedPrice) return;
+  return ((1 - discountedPrice / originalPrice) * 100).toFixed(2);
+};
+
+export const calculateReductionPercentage = (originalPrice, discountRate) => {
+  if (!originalPrice || !discountRate) return;
+  const discountedPrice = originalPrice * discountRate * 0.01;
+  return ((discountedPrice / (originalPrice - discountedPrice)) * 100).toFixed(
+    2
   );
 };

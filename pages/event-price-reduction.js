@@ -5,37 +5,37 @@ import ButtonGroup from "@/components/ui/ButtonGroup";
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
 import useInputs from "@/hooks/useInputs";
-import { calculateDiscountRate } from "@/util/calc";
+import { calculateReductionPercentage } from "@/util/calc";
 import { addComma, deleteComma } from "@/util/decimalHelpers";
 import { formula } from "@/util/formula";
 
-export default function Discount() {
+export default function EventPriceReduction() {
   const initialInputs = {
     originalPrice: "",
-    discountedPrice: "",
+    discountRate: "",
   };
   const [inputs, onChange, reset] = useInputs(initialInputs);
-  const { originalPrice, discountedPrice } = inputs;
+  const { originalPrice, discountRate } = inputs;
 
-  const [discountRate, setDiscountRate] = useState(0);
+  const [reductionPercentage, setReductionPercentage] = useState(0);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const convertedOriginalPrice = Number(deleteComma(originalPrice));
-    const convertedDiscountedPrice = Number(deleteComma(discountedPrice));
+    const convertedDiscountRate = Number(deleteComma(discountRate));
 
-    const convertedDiscountRate = calculateDiscountRate(
+    const convertedReductionPercentage = calculateReductionPercentage(
       convertedOriginalPrice,
-      convertedDiscountedPrice
+      convertedDiscountRate
     );
 
-    setDiscountRate(convertedDiscountRate);
+    setReductionPercentage(convertedReductionPercentage);
   };
 
   const resetAll = () => {
     reset();
-    setDiscountRate(0);
+    setReductionPercentage(0);
   };
 
   const [isHidden, setIsHidden] = useState(true);
@@ -45,7 +45,7 @@ export default function Discount() {
 
   return (
     <Container>
-      <Seo title="할인율 계산기" />
+      <Seo title="행사가 환원 계산기" />
       <form className="px-4 flex flex-col" onSubmit={onSubmit}>
         <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
           {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
@@ -58,18 +58,18 @@ export default function Discount() {
           onChange={onChange}
         />
         <InputBox
-          label="행사 판매가"
-          unit="원"
-          id="discountedPrice"
-          value={discountedPrice}
+          label="할인율"
+          unit="%"
+          id="discountRate"
+          value={discountRate}
           onChange={onChange}
         />
         <InputBox
-          label="할인율"
+          label="행사가 환원"
           unit="%"
           disabled
-          value={addComma(discountRate)}
-          formula={formula.discountRate}
+          value={addComma(reductionPercentage)}
+          formula={formula.reductionPercentage}
           hidden={isHidden}
         />
         <ButtonGroup onClick={resetAll} />

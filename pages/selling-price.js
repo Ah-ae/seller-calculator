@@ -28,7 +28,6 @@ export default function SellingPrice() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("submit 제출");
 
     const convertedPurchaseCost = Number(deleteComma(purchaseCost));
     const convertedCommissionPercentage = Number(deleteComma(commission));
