@@ -29,6 +29,23 @@ export default function Document() {
           property="og:image"
           content="https://firebasestorage.googleapis.com/v0/b/seller-calculator-5d44a.appspot.com/o/og-image-704x352.png?alt=media&token=1f7762d3-954a-43a2-9f09-0fe7fa087b08"
         />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="704" />
+        <meta property="og:image:height" content="352" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="온라인 셀러 계산기" />
+        <meta
+          name="twitter:url"
+          content="https://seller-calculator.vercel.app"
+        />
+        <meta
+          name="twitter:description"
+          content="마진, 판매가, 행사가 환원 등을 계산할 수 있는 웹 계산기 앱"
+        />
+        <meta
+          name="twitter:image"
+          content="https://firebasestorage.googleapis.com/v0/b/seller-calculator-5d44a.appspot.com/o/og-image-704x352.png?alt=media&token=1f7762d3-954a-43a2-9f09-0fe7fa087b08"
+        />
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
