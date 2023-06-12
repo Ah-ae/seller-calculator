@@ -1,12 +1,7 @@
 import { useState } from "react";
-import Seo from "@/components/Seo";
-import { SmallButton } from "@/components/ui/Button";
-import ButtonGroup from "@/components/ui/ButtonGroup";
-import Container from "@/components/ui/Container";
-import InputBox from "@/components/ui/InputBox";
+import PageTemplate from "@/components/template/PageTemplate";
 import useInputs from "@/hooks/useInputs";
 import { calculateDiscountRate } from "@/util/calc";
-import { addComma, deleteComma } from "@/util/decimalHelpers";
 import { formula } from "@/util/formula";
 
 export default function Discount() {
@@ -43,37 +38,42 @@ export default function Discount() {
     setIsHidden((cur) => !cur);
   };
 
+  const inputList = [
+    {
+      label: "기존 판매가",
+      unit: "원",
+      id: "originalPrice",
+      value: originalPrice,
+      onChange,
+    },
+    {
+      label: "행사 판매가",
+      unit: "원",
+      id: "discountedPrice",
+      value: discountedPrice,
+      onChange,
+    },
+  ];
+
+  const outputList = [
+    {
+      label: "할인율",
+      unit: "%",
+      value: discountRate,
+      formula: formula.discountRate,
+      hidden: isHidden,
+    },
+  ];
+
   return (
-    <Container>
-      <Seo title="할인율 계산기" />
-      <form className="px-4 flex flex-col" onSubmit={onSubmit}>
-        <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
-          {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
-        </SmallButton>
-        <InputBox
-          label="기존 판매가"
-          unit="원"
-          id="originalPrice"
-          value={originalPrice}
-          onChange={onChange}
-        />
-        <InputBox
-          label="행사 판매가"
-          unit="원"
-          id="discountedPrice"
-          value={discountedPrice}
-          onChange={onChange}
-        />
-        <InputBox
-          label="할인율"
-          unit="%"
-          disabled
-          value={addComma(discountRate)}
-          formula={formula.discountRate}
-          hidden={isHidden}
-        />
-        <ButtonGroup onClick={resetAll} />
-      </form>
-    </Container>
+    <PageTemplate
+      title="할인율 계산기"
+      onSubmit={onSubmit}
+      reset={resetAll}
+      isHidden={isHidden}
+      handleHidden={handleHidden}
+      inputList={inputList}
+      outputList={outputList}
+    />
   );
 }

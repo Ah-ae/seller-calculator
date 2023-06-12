@@ -2,7 +2,7 @@ import { Button } from "./Button";
 
 function ButtonGroup({ onClick }) {
   return (
-    <div className="my-4 flex justify-end">
+    <div className="my-8 flex justify-end">
       <Button type="submit" style="mr-3">
         계산하기
       </Button>

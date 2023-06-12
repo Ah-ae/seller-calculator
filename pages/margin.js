@@ -1,10 +1,5 @@
 import { useState } from "react";
-import Seo from "@/components/Seo";
-import { SmallButton } from "@/components/ui/Button";
-import ButtonGroup from "@/components/ui/ButtonGroup";
-import Container from "@/components/ui/Container";
-import InputList from "@/components/ui/InputList";
-import OutputList from "@/components/ui/OutputList";
+import PageTemplate from "@/components/template/PageTemplate";
 import useInputs from "@/hooks/useInputs";
 import {
   calculateMallCommissionPrice,
@@ -159,16 +154,14 @@ export default function Margin() {
   ];
 
   return (
-    <Container>
-      <Seo title="마진 계산기" />
-      <form className="px-4 flex flex-col" onSubmit={onSubmit}>
-        <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
-          {`엑셀 수식 ${isHidden ? "보기" : "가리기"}`}
-        </SmallButton>
-        <InputList list={inputList} />
-        <OutputList list={outputList} />
-        <ButtonGroup onClick={resetAll} />
-      </form>
-    </Container>
+    <PageTemplate
+      title="마진 계산기"
+      onSubmit={onSubmit}
+      reset={resetAll}
+      isHidden={isHidden}
+      handleHidden={handleHidden}
+      inputList={inputList}
+      outputList={outputList}
+    />
   );
 }
