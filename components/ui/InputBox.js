@@ -8,11 +8,12 @@ export default function InputBox({
   onChange,
   formula,
   hidden,
+  isNotUsed,
 }) {
   return (
     <div className="h-[60px] max-md:h-auto py-2 flex-col">
       <div className="flex justify-between items-center">
-        <label htmlFor={id}>
+        <label htmlFor={id} className={isNotUsed ? "line-through" : ""}>
           {label} <span className="text-sm max-md:hidden">{desc}</span>
         </label>
         <div>
@@ -28,7 +29,7 @@ export default function InputBox({
             } text-right focus:outline-gray-600 max-md:w-36`}
             disabled={disabled ? true : false}
             value={value}
-            placeholder="0"
+            placeholder={isNotUsed ? "" : "0"}
             onChange={onChange}
             autoComplete="off"
           />
