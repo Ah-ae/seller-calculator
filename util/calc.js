@@ -28,7 +28,7 @@ export const calculateMarginRate = (
   commissionPrice,
   sellingPrice
 ) => {
-  if (!purchaseCost || !shipping || !others || !sellingPrice) return;
+  if (!purchaseCost || !sellingPrice) return;
 
   // return (
   //   (1 - (purchaseCost + shipping + others) / sellingPrice) *
