@@ -133,7 +133,7 @@ export default function SellingPrice() {
           value={marginRate}
           onChange={onChange}
         />
-        <ButtonGroup onClick={resetAll} />
+        <ButtonGroup reset={resetAll} />
       </form>
     </Container>
   );

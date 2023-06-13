@@ -23,7 +23,7 @@ function PageTemplate({
         </SmallButton>
         <InputList list={inputList} />
         <OutputList list={outputList} />
-        <ButtonGroup onClick={reset} />
+        <ButtonGroup reset={reset} />
       </form>
     </Container>
   );

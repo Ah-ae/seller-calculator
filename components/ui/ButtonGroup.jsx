@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 
-function ButtonGroup({ onClick }) {
+function ButtonGroup({ reset }) {
   return (
     <div className="my-8 flex justify-end">
       <Button type="submit" style="mr-3">
@@ -9,7 +9,7 @@ function ButtonGroup({ onClick }) {
       <Button
         type="button"
         theme="bg-gray-100 hover:bg-gray-200 text-gray-400"
-        onClick={onClick}
+        onClick={reset}
       >
         초기화하기
       </Button>
