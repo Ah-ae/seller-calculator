@@ -124,8 +124,8 @@ export default function Margin() {
   const outputList = [
     {
       label: "마켓 수수료",
-      desc: "(%)",
-      unit: "%",
+      desc: "원",
+      unit: "원",
       value: commissionPrice,
       formula: formula.commissionPrice,
       hidden: isHidden,
