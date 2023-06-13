@@ -4,6 +4,7 @@ import ButtonGroup from "../ui/ButtonGroup";
 import Container from "../ui/Container";
 import InputList from "../ui/InputList";
 import OutputList from "../ui/OutputList";
+import ToggleBox from "../ui/ToggleBox";
 
 function PageTemplate({
   title,
@@ -16,6 +17,7 @@ function PageTemplate({
 }) {
   return (
     <Container>
+      <ToggleBox />
       <Seo title={title} />
       <form className="px-4 flex flex-col" onSubmit={onSubmit}>
         <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
