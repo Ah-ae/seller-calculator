@@ -28,7 +28,7 @@ module.exports = {
         },
       },
       toggle: {
-        dark: { left: "#378fe6", right: "#3eda82" },
+        dark: { left: "#3eda82", right: "#378fe6" },
       },
     },
     extend: {},
