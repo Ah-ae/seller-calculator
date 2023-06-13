@@ -14,7 +14,7 @@ https://seller-calculator.vercel.app
 
 🔽 데스크탑
 
-<img width="480" alt="스크린샷 2023-06-13 오후 2 23 29" src="https://github.com/Ah-ae/seller-calculator/assets/115610668/18e2bd07-17ea-4c48-bad4-9a55e172d894">
+<img width="480" alt="스크린샷 2023-06-13 오후 2 23 29" src="https://github.com/Ah-ae/seller-calculator/assets/115610668/f6e2503e-e169-4265-9225-e7f1f129e1b9">
 
 ### Stacks
 
