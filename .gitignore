@@ -34,3 +34,5 @@ yarn-error.log*
 # pwa build
 public/sw.js
 public/workbox-*.js
+
+.env
