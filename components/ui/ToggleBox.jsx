@@ -6,14 +6,16 @@ function ToggleBox() {
       localStorage.removeItem("theme");
       document.documentElement.classList.remove("dark");
     } else {
-      document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
     }
   };
 
   return (
     <div className="mt-4 flex justify-end items-center">
-      <span className="mr-2 text-gray-500">다크 모드</span>
+      <span className="mr-2 text-gray-500 dark:text-dark-blue-100">
+        다크 모드
+      </span>
       <Toggle handleToggle={toggleDarkMode} />
     </div>
   );

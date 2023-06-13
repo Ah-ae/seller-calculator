@@ -1,6 +1,16 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
+  const setThemeMode = `
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.classList.add('dark')
+  } else {
+    localStorage.removeItem("theme");
+    document.documentElement.classList.remove('dark')
+  }
+`;
+
   return (
     <Html lang="en">
       <Head>
@@ -50,6 +60,7 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
         <Main />
         <NextScript />
       </body>
