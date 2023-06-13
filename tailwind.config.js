@@ -21,7 +21,7 @@ module.exports = {
       },
       dark: {
         blue: {
-          100: "#8b97c6",
+          100: "#8b97c6", // text color
           200: "#1e202a", // bg
           300: "#1f212e",
           400: "#252a41",
@@ -29,7 +29,6 @@ module.exports = {
       },
       toggle: {
         dark: { left: "#378fe6", right: "#3eda82" },
-        light: "#aeb3cb",
       },
     },
     extend: {},
