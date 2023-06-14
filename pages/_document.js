@@ -2,14 +2,30 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   const setThemeMode = `
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    localStorage.setItem("theme", "dark");
-    document.documentElement.classList.add('dark')
-  } else {
-    localStorage.removeItem("theme");
-    document.documentElement.classList.remove('dark')
-  }
-`;
+    function setTheme() {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.add('dark');
+      } else {
+        localStorage.removeItem("theme");
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    function handleThemeChange(e) {
+      if (e.matches) {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.add('dark');
+      } else {
+        localStorage.removeItem("theme");
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeQuery.addListener(handleThemeChange);
+    setTheme();
+  `;
 
   return (
     <Html lang="en">
@@ -58,9 +74,9 @@ export default function Document() {
         />
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
+        <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
       </Head>
       <body className="h-screen dark:bg-dark-blue-200 dark:text-dark-blue-100">
-        <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
         <Main />
         <NextScript />
       </body>
