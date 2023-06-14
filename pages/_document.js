@@ -59,7 +59,7 @@ export default function Document() {
         <meta property="og:local" content="ko-KR" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <body>
+      <body className="h-screen dark:bg-dark-blue-200 dark:text-dark-blue-100">
         <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
         <Main />
         <NextScript />
