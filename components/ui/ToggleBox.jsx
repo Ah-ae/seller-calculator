@@ -1,13 +1,14 @@
+import { LOCAL_STORAGE_KEY, THEME } from "@/util/commonConstants";
 import Toggle from "./Toggle";
 
 function ToggleBox() {
   const toggleDarkMode = () => {
-    if (localStorage.getItem("theme") === "dark") {
-      localStorage.removeItem("theme");
-      document.documentElement.classList.remove("dark");
+    if (localStorage.getItem(LOCAL_STORAGE_KEY.THEME) === THEME.DARK) {
+      localStorage.removeItem(LOCAL_STORAGE_KEY.THEME);
+      document.documentElement.classList.remove(THEME.DARK);
     } else {
-      localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
+      localStorage.setItem(LOCAL_STORAGE_KEY.THEME, THEME.DARK);
+      document.documentElement.classList.add(THEME.DARK);
     }
   };
 
