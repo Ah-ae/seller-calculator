@@ -4,6 +4,7 @@ import { SmallButton } from "@/components/ui/Button";
 import ButtonGroup from "@/components/ui/ButtonGroup";
 import Container from "@/components/ui/Container";
 import InputBox from "@/components/ui/InputBox";
+import ToggleBox from "@/components/ui/ToggleBox";
 import useInputs from "@/hooks/useInputs";
 import {
   calculateSellingPrice,
@@ -71,6 +72,7 @@ export default function SellingPrice() {
 
   return (
     <Container>
+      <ToggleBox />
       <Seo title="판매가 계산기" />
       <form className="px-4 flex flex-col" onSubmit={onSubmit}>
         <SmallButton style="mb-4 self-end max-md:hidden" onClick={handleHidden}>
