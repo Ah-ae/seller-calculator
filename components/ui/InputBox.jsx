@@ -24,7 +24,7 @@ export default function InputBox({
             id={id}
             className={`px-2 py-1 ${
               disabled
-                ? "text-gray-400 max-md:text-gray-600 bg-gray-100 dark:bg-gray-300"
+                ? "text-gray-400 max-md:text-gray-600 bg-gray-100 dark:bg-gray-200"
                 : "text-black dark:bg-gray-100"
             } text-right focus:outline-gray-600 max-md:w-36`}
             disabled={disabled ? true : false}
