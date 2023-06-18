@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageTemplate from "@/components/template/PageTemplate";
 import useInputs from "@/hooks/useInputs";
 import { calculateDiscountRate } from "@/util/calc";
+import { deleteComma } from "@/util/decimalHelpers";
 import { formula } from "@/util/formula";
 
 export default function Discount() {
